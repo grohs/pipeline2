@@ -11,9 +11,10 @@ pipeline {
         input(message: 'Bora GO?', ok: 'Proceder')
       }
     }
-    stage('') {
+    stage('error') {
       steps {
-        sh '''git checkout master
+        sh '''git config --global push.default matching
+git checkout master
 git pull
 git merge staging
 git checkout master
