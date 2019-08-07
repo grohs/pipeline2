@@ -7,9 +7,18 @@ pipeline {
       }
     }
     stage('deploy') {
-      steps {
-        sh '''/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube/bin/sonar-scanner -Dsonar.host.url=http://192.168.0.14:9000 -Dsonar.projectName=pipeline2_staging -Dsonar.projectVersion=1.0 -Dsonar.projectKey=pipeline2.com.br -Dsonar.sources=. -Dsonar.projectBaseDir=/var/lib/jenkins/workspace/pipeline2_staging
+      parallel {
+        stage('deploy') {
+          steps {
+            sh '''/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube/bin/sonar-scanner -Dsonar.host.url=http://192.168.0.14:9000 -Dsonar.projectName=pipeline2_staging -Dsonar.projectVersion=1.0 -Dsonar.projectKey=pipeline2.com.br -Dsonar.sources=. -Dsonar.projectBaseDir=/var/lib/jenkins/workspace/pipeline2_staging
 '''
+          }
+        }
+        stage('Interactive Input') {
+          steps {
+            input(message: 'Proccedd?', ok: 'Procceed')
+          }
+        }
       }
     }
     stage('merge') {
