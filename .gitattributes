@@ -1,4 +1,4 @@
     
 Jenkinsfile merge=ours
 
-Jenkinsfile --dif
+Jenkinsfile -diff
