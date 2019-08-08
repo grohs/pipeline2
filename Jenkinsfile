@@ -18,7 +18,7 @@ git checkout master
 git pull
 git merge staging
 git checkout master	
-git remote https://github.com/grohs/pipeline2.git origin git@github.com:grohs/pipeline2.git
+git remote git remote set-url origin git@github.com:grohs/pipeline2.git
 git push https://github.com/grohs/pipeline2.git master'''
       }
     }
