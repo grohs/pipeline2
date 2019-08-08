@@ -17,7 +17,8 @@ pipeline {
 git checkout master
 git pull
 git merge staging
-git checkout master
+git checkout master	
+git remote set-https://github.com/grohs/pipeline2.git origin git@github.com:grohs/pipeline2.git
 git push https://github.com/grohs/pipeline2.git master'''
       }
     }
