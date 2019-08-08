@@ -11,14 +11,14 @@ pipeline {
         input(message: 'Bora GO?', ok: 'Proceder')
       }
     }
-    stage('error') {
+    stage('Merge') {
       steps {
         sh '''git config --global push.default matching
 git checkout master
 git pull
 git merge staging
 git checkout master
-git push'''
+git push https://github.com/grohs/pipeline2.git master'''
       }
     }
   }
